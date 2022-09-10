@@ -255,7 +255,7 @@ modify_crontab(){
 	echo -e "${OK} ${GreenBG} 配置每天凌晨自动升级V2ray内核任务 ${Font}"
 	sleep 2
 	#crontab -l >> crontab.txt
-	echo "20 12 * * * bash /root/v2ray/go.sh | tee -a /root/v2ray/update.log" >> crontab.txt
+	echo "20 12 * * * bash /root/v2ray/install-release.sh | tee -a /root/v2ray/update.log" >> crontab.txt
 	echo "30 12 * * * /sbin/reboot" >> crontab.txt
 	crontab crontab.txt
 	sleep 2
@@ -269,7 +269,11 @@ modify_crontab(){
 
 #安装caddy主程序
 caddy_install(){
-	curl https://getcaddy.com | bash -s personal
+	#apt install -y debian-keyring debian-archive-keyring apt-transport-https
+	#curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/gpg.key' | gpg --dearmor -o /usr/share/keyrings/caddy-stable-archive-keyring.gpg
+	#curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/debian.deb.txt' | tee /etc/apt/sources.list.d/caddy-stable.list
+	#apt update
+	#apt install caddy
 
 	touch /etc/systemd/system/caddy.service
 	cat <<EOF > /etc/systemd/system/caddy.service
