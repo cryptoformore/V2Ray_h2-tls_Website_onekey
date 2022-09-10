@@ -280,7 +280,7 @@ caddy_install(){
 [Unit]
 Description=Caddy server
 [Service]
-ExecStart=/usr/local/bin/caddy -conf=/etc/caddy/Caddyfile -agree=true -ca=https://acme-v02.api.letsencrypt.org/directory
+ExecStart=/usr/bin/caddy -conf=/etc/caddy/Caddyfile -agree=true -ca=https://acme-v02.api.letsencrypt.org/directory
 Restart=always
 User=root
 [Install]
